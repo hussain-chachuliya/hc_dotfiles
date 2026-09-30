@@ -12,9 +12,9 @@
 // Position is in LOGICAL pixels, so scale counts. A 2560x1600 panel at scale
 // 1.6 is 1600x1000 logical; put the next output at x=1600, not x=2560.
 
-output "eDP-2" {
-    mode "2560x1600@240.00"
-    scale 1.6
+output "Tianma Microelectronics Ltd. TL160ADMP20 0x00000001" {
+    mode "2560x1600@240.000"
+    scale 1.45
     transform "normal"
     position x=0 y=0
 
