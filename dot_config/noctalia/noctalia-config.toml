@@ -1,0 +1,399 @@
+[accessibility]
+ui_scale = 1.0000000074505806
+
+[backdrop]
+blur_intensity = 0.71999998390674591
+tint_intensity = 0.4999999888241291
+
+[bar.default]
+background_opacity = 0.71999999999999997
+capsule_opacity = 0.0
+capsule_padding = 8.0
+capsule_thickness = 0.83999998494982719
+center = [ "widget_3", "workspaces", "tray", "bar" ]
+concave_edge_corners = true
+end = [ "media", "spacer_1", "notifications", "launcher", "network", "bluetooth", "volume", "battery", "clock-date" ]
+margin_edge = 0
+margin_ends = 0
+radius_bottom_left = 10
+radius_bottom_right = 10
+radius_top_left = 0
+radius_top_right = 0
+scale = 1.1000000000000001
+shadow = false
+start = [ "session", "group:g1", "status", "summary", "active_window" ]
+thickness = 35
+widget_spacing = 14
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    border = ""
+    enabled = true
+    fill = "on_secondary"
+    id = "g1"
+    members = [ "temp", "spacer_2", "sysmon_2", "spacer_2", "sysmon_3" ]
+    opacity = 1.0
+    padding = 8.0
+
+[calendar]
+enabled = true
+event_time_format = "%hh:%mm"
+
+    [calendar.account.google]
+    name = "Google"
+    type = "google"
+
+[control_center.calendar]
+show_events_card = true
+
+[dock]
+auto_hide = true
+border = "on_surface_variant"
+border_width = 0.5
+enabled = false
+icon_size = 36
+launcher_position = "start"
+pinned = []
+position = "left"
+reserve_space = false
+show_dots = true
+
+[hooks]
+battery_charging = "pw-play ~/.config/noctalia/sounds/charging_sound.mp3"
+battery_discharging = "pw-play ~/.config/noctalia/sounds/charging_sound.mp3"
+
+[hot_corners]
+enabled = true
+
+    [hot_corners.bottom_left]
+    action = "window_switcher"
+
+    [hot_corners.bottom_right]
+    action = "none"
+    command = "cd ~/Pictures;swayimg --gallery;"
+
+    [hot_corners.top_right]
+    action = "control_center"
+
+[idle]
+behavior_order = [ "screen-off", "lock", "lock-and-suspend" ]
+pre_action_fade_seconds = 0
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 180
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = true
+    timeout = 300
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    locked_timeout = 20
+    timeout = 180
+
+[location]
+auto_locate = true
+
+[lockscreen_widgets]
+enabled = true
+schema_version = 2
+widget_order = [ "lockscreen-login-box@eDP-2", "lockscreen-login-box@eDP-1", "lockscreen-widget-0000000000000001" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 800.0
+    cy = 578.0
+    output = "eDP-1"
+    placement_height = 1000.0
+    placement_width = 1600.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.0
+        background_radius = 32.0
+        center_password_text = true
+        input_opacity = 0.71999999999999997
+        input_radius = 32.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = false
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-2"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 800.0
+    cy = 818.0
+    output = "eDP-2"
+    placement_height = 1000.0
+    placement_width = 1600.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-2".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
+    box_height = 256.0
+    box_width = 720.0
+    cx = 800.0
+    cy = 308.0
+    output = "eDP-1"
+    placement_height = 1000.0
+    placement_width = 1600.0
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+        background_color = "on_secondary"
+        background_opacity = 0.0
+        background_padding = 0
+        background_radius = 32
+        clock_style = "analog"
+        color = "on_secondary"
+        format = "{:%m:%M%p}"
+
+[plugin_settings."blackbartblues/keymap"]
+panel_placement = "attached"
+
+[plugin_settings."gustav0ar/drive-health"]
+drives_placement = "attached"
+system_collector_enabled = true
+
+[plugin_settings."linux-fertxo/hyprland-visual-editor"]
+is_system_active = true
+
+[plugin_settings."rylos/syncthing"]
+insecure_tls = true
+
+[plugins]
+enabled = [ "blackbartblues/keymap", "hussain/disk-usage", "rylos/syncthing" ]
+
+[shell]
+app_icon_color = "primary"
+clipboard_image_action_command = "noctalia msg annotate"
+date_format = "%A, %d %b %Y"
+lang = "en"
+launch_apps_as_systemd_services = true
+polkit_agent = true
+screen_time_enabled = true
+settings_show_advanced = true
+
+    [shell.animation]
+    speed = 0.5000000074505806
+
+    [shell.greeter_sync]
+    auto_sync = true
+
+    [shell.launcher]
+    app_grid = true
+    compact = false
+    pinned = [
+        "com.shellyorg.shelly",
+        "thunar",
+        "jetbrains-studio",
+        "skills-manager",
+        "ai.opencode.desktop",
+        "obsidian",
+        "brave-browser",
+        "localsend",
+        "io.github.bluemancz.hyprmod"
+    ]
+    sort_by_usage = true
+
+    [shell.panel]
+    clipboard_placement = "attached"
+    clipboard_position = "top_center"
+    launcher_placement = "attached"
+    open_near_click_control_center = true
+    session_placement = "floating"
+    session_position = "center"
+
+    [shell.screen_corners]
+    enabled = true
+    size = 12
+
+    [shell.screenshot]
+    copy_to_clipboard = true
+    directory = "~/Pictures/Screenshots"
+    filename_pattern = "Screenshot from %Y-%m-%d %H-%M-%S"
+    pipe_command = ""
+    pipe_to_command = false
+    save_to_file = true
+
+    [[shell.session.actions]]
+    action = "lock"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "1"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "logout"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "2"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "lock_and_suspend"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "3"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "reboot"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "4"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "shutdown"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "5"
+    variant = "destructive"
+
+    [shell.window_switcher]
+    mru = true
+
+[system.monitor]
+gpu_poll_seconds = 2
+
+[theme]
+builtin = "Rosé Pine"
+community_palette = "Macaron"
+mode = "dark"
+pure_black_dark = false
+source = "wallpaper"
+wallpaper_scheme = "m3-content"
+
+    [theme.templates]
+    builtin_ids = [ "alacritty", "gtk3", "gtk4", "kcolorscheme", "niri", "qt" ]
+    community_ids = [ "opencode", "brave" ]
+
+[wallpaper]
+transition_duration = 1000
+
+    [wallpaper.default]
+    path = "/home/hussain/Pictures/autumn-leaves-red-orange.jpg"
+
+    [wallpaper.last]
+    path = "/home/hussain/Pictures/autumn-leaves-red-orange.jpg"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/hussain/Pictures/airplane-flying-through-stormy-clouds.jpeg"
+
+    [wallpaper.monitors.eDP-2]
+    path = "/home/hussain/Pictures/autumn-leaves-red-orange.jpg"
+
+[widget.bar]
+type = "rylos/syncthing:bar"
+
+[widget.clock]
+color = "secondary"
+format = "{:%I:%M %p}"
+
+[widget.clock-date]
+color = "secondary"
+format = "{:%a, %d %b %Y   %I:%M %p}"
+type = "clock"
+
+[widget.launcher]
+color = "secondary"
+
+[widget.media]
+hide_when_no_media = true
+title_scroll = "on_hover"
+
+[widget.network]
+color = "secondary"
+show_label = false
+
+[widget.notifications]
+color = "secondary"
+
+[widget.session]
+capsule_opacity = 0.35999999999999999
+color = "error"
+
+[widget.spacer_1]
+type = "spacer"
+
+[widget.spacer_2]
+length = 8
+type = "spacer"
+
+[widget.status]
+type = "aristides/udiskie:status"
+
+[widget.summary]
+type = "gustav0ar/drive-health:summary"
+
+[widget.sysmon_2]
+glyph = "gpu-usage"
+show_value = false
+stat = "gpu_temp"
+type = "sysmon"
+
+[widget.sysmon_3]
+glyph = "cpu-2"
+stat = "ram_used"
+type = "sysmon"
+
+[widget.temp]
+show_value = false
+
+[widget.tray]
+capsule = true
+capsule_fill = "on_secondary"
+
+[widget.volume]
+color = "secondary"
+show_label = false
+
+[widget.widget_2]
+type = "blackbartblues/keymap:widget"
+
+[widget.widget_3]
+type = "blackbartblues/keymap:widget"
+
+[widget.workspaces]
+active_pill_size = 2.5
+capsule = true
+capsule_fill = "on_primary"
+inactive_pill_size = 1.0
+pill_scale = 0.71999999999999997
+show_labels = true
