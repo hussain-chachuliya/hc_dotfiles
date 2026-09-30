@@ -21,7 +21,8 @@ environment {
     // __GL_GSYNC_ALLOWED "1"
 
     // Qt apps often need this explicitly outside a full desktop session.
-    QT_QPA_PLATFORM "wayland"
+    QT_QPA_PLATFORM "wayland;xcb"
+    QT_SCALE_FACTOR "1.45"
 
     // ---- Carried over from the Noctalia template ----
     // Qt draws its own titlebars on Wayland unless told to use the platform
