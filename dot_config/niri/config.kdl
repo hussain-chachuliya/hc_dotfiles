@@ -1,0 +1,34 @@
+// niri + Noctalia configuration.
+//
+// Layering (niri merges included files positionally; LATER WINS):
+//   Layer 1  config/*.kdl        — hand-edited base config
+//   Layer 2  noctalia.kdl       — Noctalia live theme (tool-generated, gitignored)
+//
+// The config/ filenames are NOT prefixed with an order number, so the include
+// list below IS the load order. Do not reorder them by "tidying up" the
+// alphabetical listing: later files win on merge, and alphabetical order is
+// not the intended order. Add new files by appending an include here.
+//
+// Noctalia's `niri` template writes ~/.config/niri/noctalia.kdl and appends the
+// include line below to this file on its own. Do not add it by hand; do not
+// edit noctalia.kdl either. It owns every focus-ring / border / tab-indicator
+// / insert-hint colour.
+//
+// THE ONE THING THAT WILL BITE YOU: niri focus-ring and border gradients take
+// precedence over solid colours. If config/layout.kdl ever sets
+// `active-gradient`, Noctalia's `active-color` in noctalia.kdl will be ignored
+// and your theme will look frozen. Keep the base layer on solid colours.
+
+include "config/input.kdl"
+include "config/output.kdl"
+include "config/layout.kdl"
+include "config/animations.kdl"
+include "config/window-rules.kdl"
+include "config/binds.kdl"
+include "config/session.kdl"
+include "config/debug.kdl"
+
+// ---- Layer 2: Live theme (Noctalia) — last word ----
+// Appended automatically by Noctalia; see niri/noctalia.kdl.
+
+include "noctalia.kdl"

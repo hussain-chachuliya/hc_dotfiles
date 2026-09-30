@@ -1,0 +1,67 @@
+// Named workspaces, autostart and environment.
+// https://yalter.github.io/niri/Configuration:-Named-Workspaces
+
+// -----------------------------------------------------------------------------
+// NAMED WORKSPACES
+// -----------------------------------------------------------------------------
+
+workspace "gaming" {
+    open-on-output "eDP-2"
+}
+
+// -----------------------------------------------------------------------------
+// ENVIRONMENT
+// -----------------------------------------------------------------------------
+
+environment {
+    // NVIDIA only:
+    // GBM_BACKEND "nvidia-drm"
+    // __GLX_VENDOR_LIBRARY_NAME "nvidia"
+    // LIBVA_DRIVER_NAME "nvidia"
+    // __GL_GSYNC_ALLOWED "1"
+
+    // Qt apps often need this explicitly outside a full desktop session.
+    QT_QPA_PLATFORM "wayland"
+
+    // ---- Carried over from the Noctalia template ----
+    // Qt draws its own titlebars on Wayland unless told to use the platform
+    // theme plugin. libqgtk3.so is present, so "gtk3" resolves; without this,
+    // Qt windows get a second, mismatched titlebar on top of niri's.
+    QT_QPA_PLATFORMTHEME "gtk3"
+    // Belt and braces for the same problem on apps that ignore the above.
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+
+    // Electron/Chromium: "auto" uses Wayland where the session supports it and
+    // falls back to XWayland where it does not, instead of forcing either.
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+
+    // XDG_CURRENT_DESKTOP and XDG_SESSION_TYPE are deliberately NOT set here.
+    // niri-session already exports both, and the Noctalia template set them
+    // only because it can be run without niri-session.
+}
+
+// -----------------------------------------------------------------------------
+// AUTOSTART
+// -----------------------------------------------------------------------------
+// Hyprland ran these from a `hyprland.start` event hook.
+
+spawn-sh-at-startup "dbus-update-activation-environment --systemd --all"
+spawn-at-startup "noctalia"
+
+// Hyprland ran `xhost +SI:localuser:root`. niri has no X server of its own and
+// xhost is an X11 concept, so this was dropped. XWayland clients get their
+// authorization through xwayland-satellite / xauth, which niri manages.
+
+// Noctalia documents this for laptops, so logind lid handling stays consistent
+// with Noctalia's own lock-and-suspend action.
+// switch-events {
+//     lid-close {
+//         spawn "noctalia" "msg" "session" "lock-and-suspend"
+//     }
+// }
+
+// -----------------------------------------------------------------------------
+// MISC
+// -----------------------------------------------------------------------------
+// Lid handling, niri's own dialogs and debugging switches live in
+// debug.kdl; screen output in output.kdl.

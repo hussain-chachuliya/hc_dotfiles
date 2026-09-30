@@ -1,0 +1,44 @@
+// Debug options, dialogs and lid handling.
+// Ported from the parts of hypr/config/misc.lua that had any niri counterpart.
+// https://yalter.github.io/niri/Configuration:-Debug-Options
+
+debug {
+    // REQUIRED for Noctalia: lets notification actions and window activation
+    // from the shell work. Noctalia's own docs call this out.
+    honor-xdg-activation-with-invalid-serial
+
+    // ---- Hyprland settings with no niri equivalent ----
+    // misc.col.splash            -> niri has no splash screen
+    // misc.middle_click_paste    -> niri has no such toggle
+    // misc.enable_swallow        -> niri swallows fullscreen windows natively
+    // misc.swallow_regex         -> same
+    // render.direct_scanout = 2  -> niri's direct scanout is automatic; there
+    //                               is only the all-or-nothing
+    //                               `debug.disable_direct_scanout`
+    // xwayland.force_zero_scaling-> niri scales XWayland clients itself
+    // ecosystem.no_update_news   -> see hotkey-overlay below
+    // ecosystem.no_donation_nag  -> no niri equivalent
+}
+
+// niri's replacement for Hyprland's `ecosystem.no_update_news`: silence the
+// "Important Hotkeys" dialog that pops up on every fresh start.
+hotkey-overlay {
+    skip-at-startup
+}
+
+// Screenshot destination. The key binds in binds.kdl route the Print family
+// to Noctalia, so this only matters for niri's own screenshot actions
+// (Mod+Shift+Print and Ctrl+Shift+1/2/3) and for portal requests. Kept
+// identical to [shell.screenshot] in noctalia-config.toml (directory and
+// filename_pattern) so both capture paths write the same filenames.
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+// ---- Laptop ----
+// Noctalia locks before suspend by default, including logind lid-close. Add
+// this if logind's lid handling is being ignored and you want to drive it
+// yourself. May also require HandleLidSwitch=ignore in logind.conf.
+// switch-events {
+//     lid-close {
+//         spawn "noctalia" "msg" "session" "lock-and-suspend"
+//     }
+// }

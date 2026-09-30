@@ -1,0 +1,125 @@
+// Look and feel.
+// https://yalter.github.io/niri/Configuration:-Layout
+//
+// -----------------------------------------------------------------------------
+// LAYER 3 WARNING
+// Everything in the focus-ring / border / tab-indicator blocks below is a
+// FALLBACK that only shows before Noctalia has written noctalia.kdl. Noctalia
+// overrides every one of these keys. Do not add gradients here: niri gradients
+// beat solid colours, so a gradient in this file silently wins over Noctalia's
+// active-color and the wallpaper theme stops applying.
+// -----------------------------------------------------------------------------
+
+layout {
+    gaps 1
+
+    // Carried over from the Noctalia template. This is also niri's default
+    // ("never"); it is spelled out so the behaviour is pinned rather than
+    // inherited. Focusing an off-screen column scrolls it to the nearest edge
+    // instead of centering it.
+    center-focused-column "never"
+
+    // Tell clients they are tiled and ask them to drop client-side shadows.
+    // Without this, niri cannot know the corner radius and draws the ring as a
+    // solid rectangle behind the window (visible through translucent apps).
+    default-column-width { proportion 0.72; }
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
+
+    focus-ring {
+        width 0.5
+        // Solid colours only — see the layer 3 warning above.
+        active-color   "#8adccc"
+        inactive-color "#798bb2"
+        urgent-color   "#d65f5f"
+    }
+
+    border {
+        on
+        width 0.5
+        active-color   "#8adccc"
+        inactive-color "#798bb2"
+        urgent-color   "#d65f5f"
+    }
+
+    // Noctalia's bar is a layer-shell surface; struts keep windows clear of it.
+    // Only needed if you reserve space for the bar. Noctalia's dock is disabled
+    // and auto-hidden in the shipped config, so no left/bottom strut.
+    struts {
+        top 0
+    }
+
+    // Transparent gaps so the Noctalia wallpaper shows through.
+    // niri allows only ONE `layout` block per config, so this key has to live
+    // here rather than in a second block further down.
+    background-color "transparent"
+}
+
+// Rounded corners for every window. Hyprland's `decoration.rounding = 10`.
+// This has no window-rule equivalent worth setting per-app, so it is global.
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+// Make niri draw focus ring / border AROUND rounded windows rather than as a
+// background rectangle.
+prefer-no-csd
+
+// niri loads a plain Xcursor theme from ~/.local/share/icons
+cursor {
+    xcursor-theme "Bibata-Modern-Ice"
+    xcursor-size 20
+    hide-when-typing true
+}
+
+// Blur. Requires niri >= 26.04; these keys are a parse error on older versions.
+blur {
+    passes 3
+    offset 99
+    noise 0
+    saturation 1.0
+}
+
+// Noctalia wallpaper as the niri backdrop, so the overview is not empty.
+// This is Noctalia's "Option 2: Stationary Wallpaper". If you would rather have
+// a blurred per-workspace wallpaper, switch the Noctalia side to the dedicated
+// backdrop surface and replace the two rules below with:
+//     layer-rule { match namespace="^noctalia-backdrop" place-within-backdrop true }
+layer-rule {
+    match namespace="^noctalia-wallpaper"
+    place-within-backdrop true
+}
+overview {
+    backdrop-color "#212420"
+}
+
+// Noctalia layer surfaces: blur their own content rather than the wallpaper.
+// xray true (niri's default) samples the wallpaper, which bleeds wallpaper
+// pixels into the anti-aliased corners of rounded panels.
+layer-rule {
+    match namespace=r#"^noctalia-(bar-[^"]+|notification|dock|panel|attached-panel|osd)$"#
+    background-effect {
+        xray false
+    }
+}
+layer-rule {
+    match namespace="noctalia-window-switcher"
+    background-effect {
+        blur true
+        xray false
+    }
+}
+
+// Noctalia's own launcher overlay gets the same treatment.
+layer-rule {
+    match namespace=r#"^noctalia-launcher-overlay"#
+    background-effect {
+        xray false
+    }
+}

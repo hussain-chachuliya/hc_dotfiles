@@ -1,0 +1,30 @@
+// Output configuration.
+// https://yalter.github.io/niri/Configuration:-Outputs
+//
+// Find your connector names and modes with:
+//     niri msg outputs
+//
+// The name is assigned by the kernel's enumeration order, so it is NOT stable
+// across boots, docks or BIOS changes. Re-check it whenever a block below
+// silently stops taking effect; a name that matches nothing is not an error,
+// niri just ignores the whole block.
+//
+// Position is in LOGICAL pixels, so scale counts. A 2560x1600 panel at scale
+// 1.6 is 1600x1000 logical; put the next output at x=1600, not x=2560.
+
+output "eDP-2" {
+    mode "2560x1600@240.00"
+    scale 1.6
+    transform "normal"
+    position x=0 y=0
+
+    // Hyprland's `misc.vrr = 3` (VRR on, on-demand).
+    // niri: `variable-refresh-rate` is a flag; on-demand is a *property*.
+    variable-refresh-rate on-demand=true
+}
+
+// Second panel removed: `niri msg outputs` only reports eDP-2 connected, and
+// the old eDP-1 name came from a previous boot's enumeration. Add the block back
+// (same shape as above) if you dock the second panel, using whatever connector
+// name `niri msg outputs` actually reports -- not a remembered one.
+// x=1600 assumes scale 1.6 => 1600x1000 logical, so adjust if you change scale.
