@@ -1,0 +1,12 @@
+[Desktop Entry]
+Categories=
+Comment=All-in-One Assistant for Claude Code, Codex & Gemini CLI
+Exec="/home/hussain/.local/bin/CC-Switch-v3.20.4-Linux-x86_64-patched.AppImage"
+StartupWMClass=cc-switch
+Icon=cc-switch-v3.20.4-linux-x86_64-patched
+Name=CC Switch
+Terminal=false
+Type=Application
+MimeType=x-scheme-handler/ccswitch
+
+TryExec=/home/hussain/.local/bin/CC-Switch-v3.20.4-Linux-x86_64-patched.AppImage
