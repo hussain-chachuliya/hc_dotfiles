@@ -1,5 +1,5 @@
 @import url("noctalia.css");
-.thunar .standard-view .view:selected { color: hsl(0, 100%, 100%);}
+.thunar .standard-view .view:selected { color: #fbfafa;}
 .thunar treeview.view {
 padding:6px;
 }
