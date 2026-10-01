@@ -183,6 +183,7 @@ binds {
     // =========================================================================
     Mod+Z       repeat=false hotkey-overlay-title="Settings" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh settings-toggle"; }
     Mod+Shift+Z repeat=false hotkey-overlay-title="Control Center" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh panel-toggle control-center"; }
+    Mod+L       repeat=false hotkey-overlay-title="Open LocalSend" { spawn "localsend"; }
     Mod+Shift+L repeat=false hotkey-overlay-title="Lock Session" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh session lock"; }
 
     // =========================================================================
