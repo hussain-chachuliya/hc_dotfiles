@@ -14,7 +14,7 @@
 
 output "Tianma Microelectronics Ltd. TL160ADMP20 0x00000001" {
     mode "2560x1600@240.000"
-    scale 1.45
+    scale 1.5
     transform "normal"
     position x=0 y=0
 
