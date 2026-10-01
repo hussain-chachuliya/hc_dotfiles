@@ -80,8 +80,8 @@ cursor {
 
 // Blur. Requires niri >= 26.04; these keys are a parse error on older versions.
 blur {
-    passes 3
-    offset 99
+    passes 4
+    offset 100
     noise 0
     saturation 1.0
 }
