@@ -5,4 +5,12 @@
 -- with `vim.api.nvim_create_autocmd`
 --
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
--- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
+-- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")--
+--
+-- Disable autoformat for all Niri config files
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile", "BufEnter" }, {
+  pattern = "*/niri/*.kdl",
+  callback = function(args)
+    vim.b[args.buf].autoformat = false
+  end,
+})

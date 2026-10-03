@@ -3,8 +3,8 @@
 // -----------------------------------------------------------------------------
 // NAMED WORKSPACES
 // -----------------------------------------------------------------------------
-workspace gaming {
-    open-on-output eDP-2
+workspace "gaming" {
+    open-on-output "eDP-2"
 }
 // -----------------------------------------------------------------------------
 // ENVIRONMENT
@@ -27,7 +27,7 @@ environment {
     QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
     // Electron/Chromium: "auto" uses Wayland where the session supports it and
     // falls back to XWayland where it does not, instead of forcing either.
-    ELECTRON_OZONE_PLATFORM_HINT auto
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
  // XDG_CURRENT_DESKTOP and XDG_SESSION_TYPE are deliberately NOT set here.
     // niri-session already exports both, and the Noctalia template set them
     // only because it can be run without niri-session.
@@ -37,7 +37,7 @@ environment {
 // -----------------------------------------------------------------------------
 // Hyprland ran these from a `hyprland.start` event hook.
 spawn-sh-at-startup "dbus-update-activation-environment --systemd --all"
-spawn-at-startup noctalia
+spawn-at-startup "noctalia"
  // Hyprland ran `xhost +SI:localuser:root`. niri has no X server of its own and
 // xhost is an X11 concept, so this was dropped. XWayland clients get their
 // authorization through xwayland-satellite / xauth, which niri manages.
