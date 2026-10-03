@@ -28,5 +28,5 @@ include "config/session.kdl"
 include "config/debug.kdl"
 // ---- Layer 2: Live theme (Noctalia) — last word ----
 // Appended automatically by Noctalia; see niri/noctalia.kdl.
-include noctalia.kdl
+include "noctalia.kdl"
 

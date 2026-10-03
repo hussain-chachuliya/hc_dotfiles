@@ -3,7 +3,7 @@
 input {
     // Pin Mod to Super so the config behaves identically when niri runs nested
     // in a window (where niri's Mod would otherwise become Alt).
-    mod-key Super
+    mod-key "Super"
     keyboard {
         numlock
  // Leave repeat-delay / repeat-rate at niri's defaults.
