@@ -22,7 +22,7 @@ environment {
     // Qt draws its own titlebars on Wayland unless told to use the platform
     // theme plugin. libqgtk3.so is present, so "gtk3" resolves; without this,
     // Qt windows get a second, mismatched titlebar on top of niri's.
-    QT_QPA_PLATFORMTHEME gtk3
+    QT_QPA_PLATFORMTHEME "gtk3"
     // Belt and braces for the same problem on apps that ignore the above.
     QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
     // Electron/Chromium: "auto" uses Wayland where the session supports it and

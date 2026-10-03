@@ -17,14 +17,14 @@ input {
     touchpad {
         tap
         natural-scroll
-        accel-profile flat
+        accel-profile "flat"
         accel-speed 0.7
-        scroll-method two-finger
+        scroll-method "two-finger"
         middle-emulation
     }
     mouse {
         natural-scroll
-        accel-profile flat
+        accel-profile "flat"
         accel-speed 0.7
         middle-emulation
     }
