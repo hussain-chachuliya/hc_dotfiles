@@ -17,8 +17,8 @@ output="$(niri msg pick-color 2>/dev/null)" || exit 0
 hex="$(printf '%s\n' "$output" | sed -n 's/^Hex: \(#[0-9a-fA-F]\{6\}\)$/\1/p')"
 
 if [ -n "$hex" ] && command -v wl-copy >/dev/null 2>&1; then
-    printf '%s' "$hex" | wl-copy
-    printf 'Copied %s to clipboard\n' "$hex"
+  printf '%s' "$hex" | wl-copy
+  printf 'Copied %s to clipboard\n' "$hex"
 fi
 
 printf '%s\n' "$output"

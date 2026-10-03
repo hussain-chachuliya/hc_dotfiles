@@ -11,19 +11,16 @@
 //
 // Position is in LOGICAL pixels, so scale counts. A 2560x1600 panel at scale
 // 1.6 is 1600x1000 logical; put the next output at x=1600, not x=2560.
-
 output "Tianma Microelectronics Ltd. TL160ADMP20 0x00000001" {
     mode "2560x1600@240.000"
     scale 1.5
     transform "normal"
     position x=0 y=0
-
     // Hyprland's `misc.vrr = 3` (VRR on, on-demand).
     // niri: `variable-refresh-rate` is a flag; on-demand is a *property*.
     variable-refresh-rate on-demand=true
 }
-
-// Second panel removed: `niri msg outputs` only reports eDP-2 connected, and
+ // Second panel removed: `niri msg outputs` only reports eDP-2 connected, and
 // the old eDP-1 name came from a previous boot's enumeration. Add the block back
 // (same shape as above) if you dock the second panel, using whatever connector
 // name `niri msg outputs` actually reports -- not a remembered one.

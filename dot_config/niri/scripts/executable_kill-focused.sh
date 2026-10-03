@@ -11,18 +11,18 @@
 set -uo pipefail
 
 pid="$(niri msg --json focused-window 2>/dev/null |
-    sed -n 's/.*"pid":[[:space:]]*\([0-9]\{1,\}\).*/\1/p')"
+  sed -n 's/.*"pid":[[:space:]]*\([0-9]\{1,\}\).*/\1/p')"
 
 if [ -z "$pid" ]; then
-    exit 0
+  exit 0
 fi
 
 kill -TERM "$pid" 2>/dev/null || exit 0
 
 # Escalate if the client is still alive after a moment.
 for _ in 1 2 3 4 5 6 7 8 9 10; do
-    kill -0 "$pid" 2>/dev/null || exit 0
-    sleep 0.1
+  kill -0 "$pid" 2>/dev/null || exit 0
+  sleep 0.1
 done
 
 kill -KILL "$pid" 2>/dev/null || true

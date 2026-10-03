@@ -9,67 +9,118 @@
 // repeats from the repeat=true (volume/brightness) binds. Cooldown is
 // NOCTALIA_MSG_COOLDOWN seconds, default 5.
 // -----------------------------------------------------------------------------
-
 binds {
     // =========================================================================
     // WINDOW MANAGEMENT
     // =========================================================================
-
-    Mod+Q      repeat=false hotkey-overlay-title="Close Window" { close-window; }
+    Mod+Q repeat=false hotkey-overlay-title="Close Window" {
+        close-window
+    }
     Mod+Shift+Q repeat=false hotkey-overlay-title="Force-Kill Window Process" {
         spawn-sh "~/.config/niri/scripts/kill-focused.sh"
     }
-
     // Escape hatch so a remote-desktop client or software KVM can never hold
     // the session hostage.
     Mod+Ctrl+Shift+Escape repeat=false hotkey-overlay-title="Toggle Keyboard Shortcuts Inhibitor" {
         toggle-keyboard-shortcuts-inhibit
     }
-
-    Mod+Alt+Space  repeat=false hotkey-overlay-title="Toggle Floating" { toggle-window-floating; }
-    Mod+Shift+Space repeat=false { switch-focus-between-floating-and-tiling; }
-    Mod+F repeat=false hotkey-overlay-title="Fullscreen" { fullscreen-window; }
-    Mod+M repeat=false hotkey-overlay-title="Maximize Column" { maximize-column; }
-    Mod+Ctrl+F repeat=false { expand-column-to-available-width; }
-    Mod+Ctrl+M repeat=false { maximize-window-to-edges; }
-
-    Mod+G repeat=false hotkey-overlay-title="Toggle Tabbed Column" { toggle-column-tabbed-display; }
-
-    Mod+BracketLeft  { consume-or-expel-window-left; }
-    Mod+BracketRight { consume-or-expel-window-right; }
-    Mod+Comma  { consume-window-into-column; }
-    Mod+Period { expel-window-from-column; }
-
-    Mod+Minus       repeat=true hotkey-overlay-title="Narrow Column" { set-column-width "-10%"; }
-    Mod+Equal       repeat=true hotkey-overlay-title="Widen Column"  { set-column-width "+10%"; }
-    Mod+Shift+Minus repeat=true { set-window-height "-10%"; }
-    Mod+Shift+Equal repeat=true { set-window-height "+10%"; }
-
+    Mod+Alt+Space repeat=false hotkey-overlay-title="Toggle Floating" {
+        toggle-window-floating
+    }
+    Mod+Shift+Space repeat=false {
+        switch-focus-between-floating-and-tiling
+    }
+    Mod+F repeat=false hotkey-overlay-title="Fullscreen" {
+        fullscreen-window
+    }
+    Mod+M repeat=false hotkey-overlay-title="Maximize Column" {
+        maximize-column
+    }
+    Mod+Ctrl+F repeat=false {
+        expand-column-to-available-width
+    }
+    Mod+Ctrl+M repeat=false {
+        maximize-window-to-edges
+    }
+    Mod+G repeat=false hotkey-overlay-title="Toggle Tabbed Column" {
+        toggle-column-tabbed-display
+    }
+    Mod+BracketLeft {
+        consume-or-expel-window-left
+    }
+    Mod+BracketRight {
+        consume-or-expel-window-right
+    }
+    Mod+Comma {
+        consume-window-into-column
+    }
+    Mod+Period {
+        expel-window-from-column
+    }
+    Mod+Minus repeat=true hotkey-overlay-title="Narrow Column" {
+        set-column-width "-10%"
+    }
+    Mod+Equal repeat=true hotkey-overlay-title="Widen Column" {
+        set-column-width "+10%"
+    }
+    Mod+Shift+Minus repeat=true {
+        set-window-height "-10%"
+    }
+    Mod+Shift+Equal repeat=true {
+        set-window-height "+10%"
+    }
     // --- Focus ---
-    Mod+Left  { focus-column-left; }
-    Mod+Down  { focus-window-down; }
-    Mod+Up    { focus-window-up; }
-    Mod+Right { focus-column-right; }
-    Mod+Home { focus-column-first; }
-    Mod+End  { focus-column-last; }
-    Mod+Ctrl+Home { move-column-to-first; }
-    Mod+Ctrl+End  { move-column-to-last; }
-
-    Mod+Tab repeat=false hotkey-overlay-title="Window Switcher" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh window-switcher"; }
-
+    Mod+Left {
+        focus-column-left
+    }
+    Mod+Down {
+        focus-window-down
+    }
+    Mod+Up {
+        focus-window-up
+    }
+    Mod+Right {
+        focus-column-right
+    }
+    Mod+Home {
+        focus-column-first
+    }
+    Mod+End {
+        focus-column-last
+    }
+    Mod+Ctrl+Home {
+        move-column-to-first
+    }
+    Mod+Ctrl+End {
+        move-column-to-last
+    }
+    Mod+Tab repeat=false hotkey-overlay-title="Window Switcher" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh window-switcher"
+    }
     // steps back to the workspace you just left.
-    Mod+Shift+Tab repeat=false { focus-workspace-previous; }
-
+    Mod+Shift+Tab repeat=false {
+        focus-workspace-previous
+    }
     // --- Move focus ---
-    Mod+Ctrl+Left  { move-column-left; }
-    Mod+Ctrl+Down  { move-window-down; }
-    Mod+Ctrl+Up    { move-window-up; }
-    Mod+Ctrl+Right { move-column-right; }
-
+    Mod+Ctrl+Left {
+        move-column-left
+    }
+    Mod+Ctrl+Down {
+        move-window-down
+    }
+    Mod+Ctrl+Up {
+        move-window-up
+    }
+    Mod+Ctrl+Right {
+        move-column-right
+    }
     // --- Swap ---
-    Mod+Alt+Left  { swap-window-left; }
-    Mod+Alt+Right { swap-window-right; }
-
+    Mod+Alt+Left {
+        swap-window-left
+    }
+    Mod+Alt+Right {
+        swap-window-right
+    }
     // =========================================================================
     // MONITORS
     // =========================================================================
@@ -77,167 +128,329 @@ binds {
     // has no config variables; edit both output.kdl and this block together.
     // Only eDP-2 is connected, so only it gets a named bind. If a second panel
     // shows up, give it Mod+Alt+1 / Mod+Alt+Shift+1 and add an output block.
-
-    Mod+Alt+2 repeat=false hotkey-overlay-title="Focus eDP-2" { focus-monitor "eDP-2"; }
-
-    Mod+Shift+Left  { focus-monitor-left; }
-    Mod+Shift+Down  { focus-monitor-down; }
-    Mod+Shift+Up    { focus-monitor-up; }
-    Mod+Shift+Right { focus-monitor-right; }
-
+    Mod+Alt+2 repeat=false hotkey-overlay-title="Focus eDP-2" {
+        focus-monitor "eDP-2"
+    }
+    Mod+Shift+Left {
+        focus-monitor-left
+    }
+    Mod+Shift+Down {
+        focus-monitor-down
+    }
+    Mod+Shift+Up {
+        focus-monitor-up
+    }
+    Mod+Shift+Right {
+        focus-monitor-right
+    }
     // move window to a monitor, by name.
-    Mod+Alt+Shift+2 repeat=false hotkey-overlay-title="Move Column to eDP-2" { move-column-to-monitor "eDP-2"; }
-
-    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
-    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
-    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
-    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
-
-    Mod+Alt+Shift+H { move-column-to-monitor-previous; }
-    Mod+Alt+Shift+L { move-column-to-monitor-next; }
-
+    Mod+Alt+Shift+2 repeat=false hotkey-overlay-title="Move Column to eDP-2" {
+        move-column-to-monitor "eDP-2"
+    }
+    Mod+Shift+Ctrl+Left {
+        move-column-to-monitor-left
+    }
+    Mod+Shift+Ctrl+Down {
+        move-column-to-monitor-down
+    }
+    Mod+Shift+Ctrl+Up {
+        move-column-to-monitor-up
+    }
+    Mod+Shift+Ctrl+Right {
+        move-column-to-monitor-right
+    }
+    Mod+Alt+Shift+H {
+        move-column-to-monitor-previous
+    }
+    Mod+Alt+Shift+L {
+        move-column-to-monitor-next
+    }
     // =========================================================================
     // WORKSPACES
     // =========================================================================
     // niri's workspaces are dynamic and created on demand, so there is no
     // `persistent = true` equivalent and none is needed.
-
-    Mod+1 repeat=false { focus-workspace 1; }
-    Mod+2 repeat=false { focus-workspace 2; }
-    Mod+3 repeat=false { focus-workspace 3; }
-    Mod+4 repeat=false { focus-workspace 4; }
-    Mod+5 repeat=false { focus-workspace 5; }
-    Mod+6 repeat=false { focus-workspace 6; }
-    Mod+7 repeat=false { focus-workspace 7; }
-    Mod+8 repeat=false { focus-workspace 8; }
-    Mod+9 repeat=false { focus-workspace 9; }
-
-    Mod+Ctrl+1 repeat=false { move-column-to-workspace 1; }
-    Mod+Ctrl+2 repeat=false { move-column-to-workspace 2; }
-    Mod+Ctrl+3 repeat=false { move-column-to-workspace 3; }
-    Mod+Ctrl+4 repeat=false { move-column-to-workspace 4; }
-    Mod+Ctrl+5 repeat=false { move-column-to-workspace 5; }
-    Mod+Ctrl+6 repeat=false { move-column-to-workspace 6; }
-    Mod+Ctrl+7 repeat=false { move-column-to-workspace 7; }
-    Mod+Ctrl+8 repeat=false { move-column-to-workspace 8; }
-    Mod+Ctrl+9 repeat=false { move-column-to-workspace 9; }
-
-    Mod+Page_Down repeat=false hotkey-overlay-title="Next Workspace" { focus-workspace-down; }
-    Mod+Page_Up   repeat=false { focus-workspace-up; }
-    Mod+I repeat=false { focus-workspace-up; }
-
+    Mod+1 repeat=false {
+        focus-workspace 1
+    }
+    Mod+2 repeat=false {
+        focus-workspace 2
+    }
+    Mod+3 repeat=false {
+        focus-workspace 3
+    }
+    Mod+4 repeat=false {
+        focus-workspace 4
+    }
+    Mod+5 repeat=false {
+        focus-workspace 5
+    }
+    Mod+6 repeat=false {
+        focus-workspace 6
+    }
+    Mod+7 repeat=false {
+        focus-workspace 7
+    }
+    Mod+8 repeat=false {
+        focus-workspace 8
+    }
+    Mod+9 repeat=false {
+        focus-workspace 9
+    }
+    Mod+Ctrl+1 repeat=false {
+        move-column-to-workspace 1
+    }
+    Mod+Ctrl+2 repeat=false {
+        move-column-to-workspace 2
+    }
+    Mod+Ctrl+3 repeat=false {
+        move-column-to-workspace 3
+    }
+    Mod+Ctrl+4 repeat=false {
+        move-column-to-workspace 4
+    }
+    Mod+Ctrl+5 repeat=false {
+        move-column-to-workspace 5
+    }
+    Mod+Ctrl+6 repeat=false {
+        move-column-to-workspace 6
+    }
+    Mod+Ctrl+7 repeat=false {
+        move-column-to-workspace 7
+    }
+    Mod+Ctrl+8 repeat=false {
+        move-column-to-workspace 8
+    }
+    Mod+Ctrl+9 repeat=false {
+        move-column-to-workspace 9
+    }
+    Mod+Page_Down repeat=false hotkey-overlay-title="Next Workspace" {
+        focus-workspace-down
+    }
+    Mod+Page_Up repeat=false {
+        focus-workspace-up
+    }
+    Mod+I repeat=false {
+        focus-workspace-up
+    }
     // Relative workspace moves.
-    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
-    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
-    Mod+Shift+Page_Down { move-workspace-down; }
-    Mod+Shift+Page_Up   { move-workspace-up; }
-    Mod+Shift+I { move-workspace-up; }
-
+    Mod+Ctrl+Page_Down {
+        move-column-to-workspace-down
+    }
+    Mod+Ctrl+Page_Up {
+        move-column-to-workspace-up
+    }
+    Mod+Shift+Page_Down {
+        move-workspace-down
+    }
+    Mod+Shift+Page_Up {
+        move-workspace-up
+    }
+    Mod+Shift+I {
+        move-workspace-up
+    }
     // Scroll through workspaces, with a cooldown so it does not fly past.
-    Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
-    Mod+WheelScrollUp   cooldown-ms=150 { focus-workspace-up; }
-    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
-    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
-
+    Mod+WheelScrollDown cooldown-ms=150 {
+        focus-workspace-down
+    }
+    Mod+WheelScrollUp cooldown-ms=150 {
+        focus-workspace-up
+    }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 {
+        move-column-to-workspace-down
+    }
+    Mod+Ctrl+WheelScrollUp cooldown-ms=150 {
+        move-column-to-workspace-up
+    }
     // Horizontal scroll moves columns rather than workspaces, with the vertical
     // pair (Mod / Mod+Shift / Mod+Ctrl / Mod+Ctrl+Shift) as the modifier tier.
-    Mod+WheelScrollRight { focus-column-right; }
-    Mod+WheelScrollLeft  { focus-column-left; }
-    Mod+Ctrl+WheelScrollRight { move-column-right; }
-    Mod+Ctrl+WheelScrollLeft  { move-column-left; }
-    Mod+Shift+WheelScrollRight { focus-column-right; }
-    Mod+Shift+WheelScrollLeft  { focus-column-left; }
-    Mod+Ctrl+Shift+WheelScrollRight { move-column-right; }
-    Mod+Ctrl+Shift+WheelScrollLeft  { move-column-left; }
-
+    Mod+WheelScrollRight {
+        focus-column-right
+    }
+    Mod+WheelScrollLeft {
+        focus-column-left
+    }
+    Mod+Ctrl+WheelScrollRight {
+        move-column-right
+    }
+    Mod+Ctrl+WheelScrollLeft {
+        move-column-left
+    }
+    Mod+Shift+WheelScrollRight {
+        focus-column-right
+    }
+    Mod+Shift+WheelScrollLeft {
+        focus-column-left
+    }
+    Mod+Ctrl+Shift+WheelScrollRight {
+        move-column-right
+    }
+    Mod+Ctrl+Shift+WheelScrollLeft {
+        move-column-left
+    }
     // `name:gaming` workspace.
-    Mod+Alt+G repeat=false hotkey-overlay-title="Gaming Workspace" { focus-workspace "gaming"; }
-
+    Mod+Alt+G repeat=false hotkey-overlay-title="Gaming Workspace" {
+        focus-workspace "gaming"
+    }
     // =========================================================================
     // OVERVIEW
     // =========================================================================
-    Alt+Tab repeat=false hotkey-overlay-title="Toggle Overview" { toggle-overview; }
-
+    Alt+Tab repeat=false hotkey-overlay-title="Toggle Overview" {
+        toggle-overview
+    }
     // niri's "Important Hotkeys" overlay. debug.kdl sets skip-at-startup so
     // it does not pop up on every fresh start; this is the manual way in.
-    Mod+Shift+Escape repeat=false hotkey-overlay-title="Show Hotkey Overlay" { show-hotkey-overlay; }
-
+    Mod+Shift+Escape repeat=false hotkey-overlay-title="Show Hotkey Overlay" {
+        show-hotkey-overlay
+    }
     // =========================================================================
     // LAUNCHER
     // =========================================================================
-    Mod+Return repeat=false hotkey-overlay-title="Open a Terminal" { spawn "alacritty"; }
-    Mod+E      repeat=false hotkey-overlay-title="Open File Manager" { spawn "thunar"; }
-    Mod+B      repeat=false hotkey-overlay-title="Open Browser" { spawn "brave-origin"; }
-    Mod+O      repeat=false hotkey-overlay-title="Open OpenCode" { spawn "opencode-desktop"; }
-    Mod+N      repeat=false hotkey-overlay-title="Open Notes" { spawn "obsidian"; }
-    Mod+C      repeat=false hotkey-overlay-title="Open Code-OSS" { spawn "code"; }
-
-    XF86Calculator repeat=false hotkey-overlay-title="Open Calculator" { spawn "gnome-calculator"; }
-    Ctrl+Alt+Delete repeat=false hotkey-overlay-title="Open Mission Center" { spawn "missioncenter"; }
-
-    Mod+Space     repeat=false hotkey-overlay-title="Open Launcher" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh panel-toggle launcher"; }
-    Mod+Shift+Comma repeat=false hotkey-overlay-title="Open Emoji Picker" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh panel-toggle launcher /emo"; }
-
+    Mod+Return repeat=false hotkey-overlay-title="Open a Terminal" {
+        spawn "alacritty"
+    }
+    Mod+E repeat=false hotkey-overlay-title="Open File Manager" {
+        spawn "thunar"
+    }
+    Mod+B repeat=false hotkey-overlay-title="Open Browser" {
+        spawn "brave-origin"
+    }
+    Mod+O repeat=false hotkey-overlay-title="Open OpenCode" {
+        spawn "opencode-desktop"
+    }
+    Mod+N repeat=false hotkey-overlay-title="Open Notes" {
+        spawn "obsidian"
+    }
+    Mod+C repeat=false hotkey-overlay-title="Open Code-OSS" {
+        spawn "code"
+    }
+    XF86Calculator repeat=false hotkey-overlay-title="Open Calculator" {
+        spawn "gnome-calculator"
+    }
+    Ctrl+Alt+Delete repeat=false hotkey-overlay-title="Open Mission Center" {
+        spawn "missioncenter"
+    }
+    Mod+Space repeat=false hotkey-overlay-title="Open Launcher" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh panel-toggle launcher"
+    }
+    Mod+Shift+Comma repeat=false hotkey-overlay-title="Open Emoji Picker" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh panel-toggle launcher /emo"
+    }
     // =========================================================================
     // PANELS
     // =========================================================================
-    Mod+Z       repeat=false hotkey-overlay-title="Settings" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh settings-toggle"; }
-    Mod+Shift+Z repeat=false hotkey-overlay-title="Control Center" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh panel-toggle control-center"; }
-    Mod+L       repeat=false hotkey-overlay-title="Open LocalSend" { spawn "localsend"; }
-    Mod+Shift+L repeat=false hotkey-overlay-title="Lock Session" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh session lock"; }
-
+    Mod+Z repeat=false hotkey-overlay-title="Settings" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh settings-toggle"
+    }
+    Mod+Shift+Z repeat=false hotkey-overlay-title="Control Center" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh panel-toggle control-center"
+    }
+    Mod+L repeat=false hotkey-overlay-title="Open LocalSend" {
+        spawn "localsend"
+    }
+    Mod+Shift+L repeat=false hotkey-overlay-title="Lock Session" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh session lock"
+    }
     // =========================================================================
     // SYSTEM
     // =========================================================================
     // niri live-reloads its own config when any included file changes, so there
     // is no separate compositor-reload bind; this reloads Noctalia only.
-    Mod+Ctrl+R  repeat=false hotkey-overlay-title="Reload Noctalia Config" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh config-reload"; }
-
-    Mod+Shift+E repeat=false hotkey-overlay-title="Quit niri" { quit; }
-
+    Mod+Ctrl+R repeat=false hotkey-overlay-title="Reload Noctalia Config" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh config-reload"
+    }
+    Mod+Shift+E repeat=false hotkey-overlay-title="Quit niri" {
+        quit
+    }
     // Display power. Both paths are bound: Noctalia for OSD coherence, niri for
     // the case where Noctalia is not running yet.
-    Mod+F11       repeat=false hotkey-overlay-title="Turn Displays On"  { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh dpms-on"; }
-    Mod+F12       repeat=false hotkey-overlay-title="Turn Displays Off" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh dpms-off"; }
-    Mod+Shift+F11 repeat=false { power-on-monitors; }
-    Mod+Shift+F12 repeat=false { power-off-monitors; }
-
+    Mod+F11 repeat=false hotkey-overlay-title="Turn Displays On" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh dpms-on"
+    }
+    Mod+F12 repeat=false hotkey-overlay-title="Turn Displays Off" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh dpms-off"
+    }
+    Mod+Shift+F11 repeat=false {
+        power-on-monitors
+    }
+    Mod+Shift+F12 repeat=false {
+        power-off-monitors
+    }
     // =========================================================================
     // BAR / DOCK
     // =========================================================================
-    Mod+Ctrl+B  repeat=false hotkey-overlay-title="Toggle Bar" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh bar-toggle"; }
-    Mod+Alt+B   repeat=false hotkey-overlay-title="Toggle Bar Auto-Hide" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh bar-auto-hide-set toggle"; }
-    Mod+Shift+D repeat=false hotkey-overlay-title="Reload Dock" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh dock-reload"; }
-    Mod+Ctrl+D  repeat=false hotkey-overlay-title="Toggle Dock" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh dock-toggle"; }
-    Mod+Alt+D   repeat=false hotkey-overlay-title="Toggle Dock Auto-Hide" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh dock-auto-hide-set toggle"; }
-
+    Mod+Ctrl+B repeat=false hotkey-overlay-title="Toggle Bar" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh bar-toggle"
+    }
+    Mod+Alt+B repeat=false hotkey-overlay-title="Toggle Bar Auto-Hide" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh bar-auto-hide-set toggle"
+    }
+    Mod+Shift+D repeat=false hotkey-overlay-title="Reload Dock" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh dock-reload"
+    }
+    Mod+Ctrl+D repeat=false hotkey-overlay-title="Toggle Dock" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh dock-toggle"
+    }
+    Mod+Alt+D repeat=false hotkey-overlay-title="Toggle Dock Auto-Hide" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh dock-auto-hide-set toggle"
+    }
     // =========================================================================
     // TOGGLES
     // =========================================================================
-    Mod+Ctrl+G repeat=false hotkey-overlay-title="Toggle Caffeine" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh caffeine-toggle"; }
-    Mod+Ctrl+U repeat=false hotkey-overlay-title="Toggle Night Light" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh nightlight-toggle"; }
-    Mod+Ctrl+O repeat=false hotkey-overlay-title="Toggle OSD" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh osd-toggle"; }
-    Mod+Shift+B repeat=false hotkey-overlay-title="Toggle Bluetooth" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh bluetooth-toggle"; }
-    Mod+Shift+P repeat=false hotkey-overlay-title="Session Panel" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh panel-toggle session"; }
-    Mod+Shift+F repeat=false hotkey-overlay-title="Toggle Wi-Fi" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh wifi-toggle"; }
-    Mod+Ctrl+X  repeat=false hotkey-overlay-title="Toggle Network" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh network-toggle"; }
-
+    Mod+Ctrl+G repeat=false hotkey-overlay-title="Toggle Caffeine" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh caffeine-toggle"
+    }
+    Mod+Ctrl+U repeat=false hotkey-overlay-title="Toggle Night Light" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh nightlight-toggle"
+    }
+    Mod+Ctrl+O repeat=false hotkey-overlay-title="Toggle OSD" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh osd-toggle"
+    }
+    Mod+Shift+B repeat=false hotkey-overlay-title="Toggle Bluetooth" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh bluetooth-toggle"
+    }
+    Mod+Shift+P repeat=false hotkey-overlay-title="Session Panel" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh panel-toggle session"
+    }
+    Mod+Shift+F repeat=false hotkey-overlay-title="Toggle Wi-Fi" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh wifi-toggle"
+    }
+    Mod+Ctrl+X repeat=false hotkey-overlay-title="Toggle Network" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh network-toggle"
+    }
     // =========================================================================
     // AUDIO & BRIGHTNESS  (work while locked, like Hyprland's locked=true)
     // =========================================================================
-    XF86AudioRaiseVolume allow-when-locked=true repeat=true { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh volume-up"; }
-    XF86AudioLowerVolume allow-when-locked=true repeat=true { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh volume-down"; }
-    XF86AudioMute        allow-when-locked=true repeat=false { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh volume-mute"; }
-    XF86AudioMicMute     allow-when-locked=true repeat=false { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh mic-mute"; }
-
-    XF86AudioPlay  allow-when-locked=true repeat=false { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh media toggle"; }
-    XF86AudioPause allow-when-locked=true repeat=false { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh media toggle"; }
-    XF86AudioNext  allow-when-locked=true repeat=false { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh media next"; }
-    XF86AudioPrev  allow-when-locked=true repeat=false { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh media previous"; }
-
-    XF86MonBrightnessUp   allow-when-locked=true repeat=true { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh brightness-up"; }
-    XF86MonBrightnessDown allow-when-locked=true repeat=true { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh brightness-down"; }
-
+    XF86AudioRaiseVolume allow-when-locked=true repeat=true {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh volume-up"
+    }
+    XF86AudioLowerVolume allow-when-locked=true repeat=true {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh volume-down"
+    }
+    XF86AudioMute allow-when-locked=true repeat=false {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh volume-mute"
+    }
+    XF86AudioMicMute allow-when-locked=true repeat=false {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh mic-mute"
+    }
+    XF86AudioPlay allow-when-locked=true repeat=false {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh media toggle"
+    }
+    XF86AudioPause allow-when-locked=true repeat=false {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh media toggle"
+    }
+    XF86AudioNext allow-when-locked=true repeat=false {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh media next"
+    }
+    XF86AudioPrev allow-when-locked=true repeat=false {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh media previous"
+    }
+    XF86MonBrightnessUp allow-when-locked=true repeat=true {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh brightness-up"
+    }
+    XF86MonBrightnessDown allow-when-locked=true repeat=true {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh brightness-down"
+    }
     // =========================================================================
     // SCREENSHOTS
     // =========================================================================
@@ -249,37 +462,56 @@ binds {
     // screenshot-fullscreen, screenshot-annotate, annotate), so the old
     // "capture one window" idea becomes a full frozen-frame annotate, and
     // Mod+Shift+Print is niri's own screencopy as a Noctalia-free fallback.
-    Print           repeat=false hotkey-overlay-title="Screenshot Region"   { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh screenshot-region"; }
-    Mod+Print       repeat=false hotkey-overlay-title="Screenshot Fullscreen" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh screenshot-fullscreen"; }
-    Alt+Print       repeat=false hotkey-overlay-title="Screenshot + Annotate" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh screenshot-annotate"; }
-    Mod+Shift+Print repeat=false hotkey-overlay-title="Screenshot (niri)"    { screenshot-screen; }
-
+    Print repeat=false hotkey-overlay-title="Screenshot Region" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh screenshot-region"
+    }
+    Mod+Print repeat=false hotkey-overlay-title="Screenshot Fullscreen" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh screenshot-fullscreen"
+    }
+    Alt+Print repeat=false hotkey-overlay-title="Screenshot + Annotate" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh screenshot-annotate"
+    }
+    Mod+Shift+Print repeat=false hotkey-overlay-title="Screenshot (niri)" {
+        screenshot-screen
+    }
     // niri's own screenshot actions on the Ctrl+Shift+1/2/3 row, kept from the
     // Noctalia template. The Print family above is the one you will actually
     // use; these exist so niri's interactive region picker and its
     // capture-one-window action are reachable, which Noctalia has no verb for.
     // Note screenshot-screen duplicates Mod+Shift+Print on purpose: the Print
     // one is the fallback for when Noctalia is not running.
-    Ctrl+Shift+1 repeat=false hotkey-overlay-title="Screenshot Region (niri)"   { screenshot; }
-    Ctrl+Shift+2 repeat=false hotkey-overlay-title="Screenshot Screen (niri)"   { screenshot-screen; }
-    Ctrl+Shift+3 repeat=false hotkey-overlay-title="Screenshot Window (niri)"   { screenshot-window; }
-
+    Ctrl+Shift+1 repeat=false hotkey-overlay-title="Screenshot Region (niri)" {
+        screenshot
+    }
+    Ctrl+Shift+2 repeat=false hotkey-overlay-title="Screenshot Screen (niri)" {
+        screenshot-screen
+    }
+    Ctrl+Shift+3 repeat=false hotkey-overlay-title="Screenshot Window (niri)" {
+        screenshot-window
+    }
     // =========================================================================
     // THEMING & WALLPAPER
     // =========================================================================
     // hyprpicker is Hyprland-only. niri has a built-in picker; the wrapper also
     // copies the hex to the clipboard, which is what `hyprpicker -a` did.
-    Mod+P repeat=false hotkey-overlay-title="Pick Color" { spawn-sh "~/.config/niri/scripts/pick-color.sh"; }
-
-    Mod+Shift+W repeat=false hotkey-overlay-title="Wallpaper Picker" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh panel-toggle wallpaper"; }
-    Mod+Ctrl+W  repeat=false hotkey-overlay-title="Random Wallpaper" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh wallpaper-random"; }
-    Mod+Shift+M repeat=false hotkey-overlay-title="Toggle Dark/Light" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh theme-mode-toggle"; }
-
+    Mod+P repeat=false hotkey-overlay-title="Pick Color" {
+        spawn-sh "~/.config/niri/scripts/pick-color.sh"
+    }
+    Mod+Shift+W repeat=false hotkey-overlay-title="Wallpaper Picker" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh panel-toggle wallpaper"
+    }
+    Mod+Ctrl+W repeat=false hotkey-overlay-title="Random Wallpaper" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh wallpaper-random"
+    }
+    Mod+Shift+M repeat=false hotkey-overlay-title="Toggle Dark/Light" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh theme-mode-toggle"
+    }
     // =========================================================================
     // CLIPBOARD
     // =========================================================================
-    Mod+V repeat=false hotkey-overlay-title="Clipboard History" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh panel-toggle clipboard"; }
-
+    Mod+V repeat=false hotkey-overlay-title="Clipboard History" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh panel-toggle clipboard"
+    }
     // urdu-translit: transliterate the selection to Urdu, in place.
     // Absolute path on purpose: niri's spawn does not read a login shell's
     // PATH, and this tool lives in ~/.local/bin.
@@ -299,11 +531,16 @@ binds {
     Mod+Shift+U repeat=false hotkey-overlay-title="Urdu: Other Spelling" {
         spawn-sh "~/.local/bin/urdu-translit --clip --pick 2"
     }
-
     // =========================================================================
     // NOTIFICATIONS
     // =========================================================================
-    Mod+A       repeat=false hotkey-overlay-title="Notification Center" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh panel-toggle control-center notifications"; }
-    Mod+Ctrl+N  repeat=false hotkey-overlay-title="Toggle Do Not Disturb" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh notification-dnd-toggle"; }
-    Mod+Shift+N repeat=false hotkey-overlay-title="Clear Notifications" { spawn-sh "~/.config/niri/scripts/noctalia-msg.sh notification-clear-active"; }
+    Mod+A repeat=false hotkey-overlay-title="Notification Center" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh panel-toggle control-center notifications"
+    }
+    Mod+Ctrl+N repeat=false hotkey-overlay-title="Toggle Do Not Disturb" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh notification-dnd-toggle"
+    }
+    Mod+Shift+N repeat=false hotkey-overlay-title="Clear Notifications" {
+        spawn-sh "~/.config/niri/scripts/noctalia-msg.sh notification-clear-active"
+    }
 }

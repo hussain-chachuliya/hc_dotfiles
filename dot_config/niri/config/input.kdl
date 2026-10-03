@@ -1,15 +1,12 @@
 // Input configuration.
 // https://yalter.github.io/niri/Configuration:-Input
-
 input {
     // Pin Mod to Super so the config behaves identically when niri runs nested
     // in a window (where niri's Mod would otherwise become Alt).
-    mod-key "Super"
-
+    mod-key Super
     keyboard {
         numlock
-
-        // Leave repeat-delay / repeat-rate at niri's defaults.
+ // Leave repeat-delay / repeat-rate at niri's defaults.
 
         // Uncomment if you do not use localectl to drive the layout:
         // xkb {
@@ -17,39 +14,33 @@ input {
         //     options "compose:ralt,ctrl:nocaps"
         // }
     }
-
     touchpad {
         tap
         natural-scroll
-        accel-profile "flat"
+        accel-profile flat
         accel-speed 0.7
-        scroll-method "two-finger"
+        scroll-method two-finger
         middle-emulation
     }
-
     mouse {
         natural-scroll
-        accel-profile "flat"
+        accel-profile flat
         accel-speed 0.7
         middle-emulation
     }
-
     // Carried over from the Noctalia template (formerly niri/cfg/input.kdl,
     // since deleted): focus follows the pointer, and re-focusing the current
     // workspace bounces you back to the one you came from.
     focus-follows-mouse
     workspace-auto-back-and-forth
-
-    // trackpoint { natural-scroll; accel-profile "flat"; accel-speed 0.7; }
+ // trackpoint { natural-scroll; accel-profile "flat"; accel-speed 0.7; }
 }
-
 gestures {
     // Noctalia owns its own hot corners via [hot_corners] in its config, but
     // niri's top-left overview corner is separate and useful on a laptop.
     hot-corners {
         top-left
     }
-
     dnd-edge-view-scroll {
         trigger-width 40
         max-speed 2000
