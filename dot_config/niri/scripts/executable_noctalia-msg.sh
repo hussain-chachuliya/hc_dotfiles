@@ -30,7 +30,7 @@ status=$?
 
 # Success: stay out of the way.
 if [ "$status" -eq 0 ]; then
-	exit 0
+  exit 0
 fi
 
 # Build a single-line message. Fall back to the exit status if the command
@@ -52,23 +52,23 @@ now="$(date +%s)"
 find "$state_dir" -type f -mmin "+$((cooldown / 60 + 1))" -delete 2>/dev/null
 
 if [ -r "$stamp" ]; then
-	last="$(cat "$stamp" 2>/dev/null || echo 0)"
-	case "$last" in
-	'' | *[!0-9]*) last=0 ;;
-	esac
-	if [ "$((now - last))" -lt "$cooldown" ]; then
-		exit "$status"
-	fi
+  last="$(cat "$stamp" 2>/dev/null || echo 0)"
+  case "$last" in
+  '' | *[!0-9]*) last=0 ;;
+  esac
+  if [ "$((now - last))" -lt "$cooldown" ]; then
+    exit "$status"
+  fi
 fi
 printf '%s' "$now" >"$stamp" 2>/dev/null
 
 # --- report it ---
 if command -v notify-send >/dev/null 2>&1; then
-	notify-send --app-name="Noctalia" --urgency=critical \
-		"Noctalia: $* failed" "$msg" 2>/dev/null
+  notify-send --app-name="Noctalia" --urgency=critical \
+    "Noctalia: $* failed" "$msg" 2>/dev/null
 else
-	# No notification daemon reachable; at least leave it in the journal.
-	printf 'noctalia-msg: %s: %s\n' "$*" "$msg" >&2
+  # No notification daemon reachable; at least leave it in the journal.
+  printf 'noctalia-msg: %s: %s\n' "$*" "$msg" >&2
 fi
 
 exit "$status"

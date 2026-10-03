@@ -4,14 +4,12 @@
 // Rules are positional and merge: generic first, specific later, later wins.
 // A window matches if it satisfies ANY `match` and NONE of the `exclude`.
 //
-// niri's app-id is a regex matched anywhere in the string, so anchor with ^...$ 
+// niri's app-id is a regex matched anywhere in the string, so anchor with ^...$
 // when you mean one exact app.
 // niri derives app-id from WM_CLASS for XWayland clients, so .exe rules work.
-
 // ============================================================================
 // GLOBAL
 // ============================================================================
-
 window-rule {
     match is-active=true
     opacity 0.9
@@ -20,13 +18,11 @@ window-rule {
     match is-active=false
     opacity 0.51
 }
-
 // Draw the border and focus ring AROUND rounded windows instead of as a solid
 // background rectangle that shows through translucent apps.
 window-rule {
     draw-border-with-background false
 }
-
 // Blur behind windows. Requires niri >= 26.04.
 // xray false samples the real content instead of the wallpaper.
 window-rule {
@@ -35,138 +31,128 @@ window-rule {
         xray false
     }
 }
-
 // ============================================================================
 // APPS
 // ============================================================================
-
 window-rule {
-    match app-id=r#"^(?i)(ONLYOFFICE|onlyoffice-desktopeditors)$"#
+    match app-id="^(?i)(ONLYOFFICE|onlyoffice-desktopeditors)$"
     open-maximized true
-    default-column-width { proportion 1.0; }
+    default-column-width {
+        proportion 1.0
+    }
 }
-
 window-rule {
-    match title=r#"^([Pp]icture[-\s]?[Ii]n[-\s]?[Pp]icture)(.*)$"#
+    match title="^([Pp]icture[-\\s]?[Ii]n[-\\s]?[Pp]icture)(.*)$"
     open-floating true
 }
-
 // Wine / Windows executables.
 window-rule {
-    match app-id=r#"^(.*\.exe)$"#
+    match app-id="^(.*\\.exe)$"
     open-floating true
 }
-
 // Shell launchers and app-grid surfaces.
 window-rule {
-    match app-id=r#"(?i)^(.*launcher.*)$"#
+    match app-id="(?i)^(.*launcher.*)$"
     open-floating true
 }
-
 // Calculators.
 window-rule {
-    match app-id=r#"(?i)^(.*calc.*)$"#
+    match app-id="(?i)^(.*calc.*)$"
     open-floating true
 }
-
 // Noctalia's own windows float; it does its own positioning and rounding.
 window-rule {
-    match app-id=r#"^(dev\.)?noctalia\.Noctalia(\.Settings)?$"#
+    match app-id="^(dev\\.)?noctalia\\.Noctalia(\\.Settings)?$"
     open-floating true
 }
-
 // ...but the Settings window is a fixed-size modal rather than a free-floating
 // panel, so it gets a size. Carried over from the Noctalia template.
 window-rule {
-    match app-id=r#"^(dev\.)?noctalia\.Noctalia\.Settings$"#
+    match app-id="^(dev\\.)?noctalia\\.Noctalia\\.Settings$"
     open-floating true
-    default-column-width { fixed 1080; }
-    default-window-height { fixed 920; }
+    default-column-width {
+        fixed 1080
+    }
+    default-window-height {
+        fixed 920
+    }
 }
-
 // ============================================================================
 // FLOATING UTILITIES & COMMON MODALS
 // ============================================================================
-
 window-rule {
-    match app-id=r#"^(peazip)$"#
+    match app-id="^(peazip)$"
     open-floating true
 }
 window-rule {
-    match app-id=r#"(kvantummanager|qt[56]ct|nwg-look)$"#
+    match app-id="(kvantummanager|qt[56]ct|nwg-look)$"
     open-floating true
 }
 window-rule {
-    match app-id=r#"^(org\.pulseaudio\.pavucontrol|blueman-manager|nm-applet|nm-connection-editor)$"#
-    open-floating true
-}
-
-window-rule {
-    match title=r#"^(Open|Authentication Required|Add Folder to Workspace|Choose Files|Save As|Confirm to replace files|File Operation Progress)$"#
+    match app-id="^(org\\.pulseaudio\\.pavucontrol|blueman-manager|nm-applet|nm-connection-editor)$"
     open-floating true
 }
 window-rule {
-    match title=r#"^(File Upload|Choose wallpaper|Library)(.*)$"#
+    match title="^(Open|Authentication Required|Add Folder to Workspace|Choose Files|Save As|Confirm to replace files|File Operation Progress)$"
     open-floating true
 }
 window-rule {
-    match title=r#"(?i)(dialog)"#
+    match title="^(File Upload|Choose wallpaper|Library)(.*)$"
     open-floating true
 }
 window-rule {
-    match app-id=r#"(?i)^(.*dialog.*)$"#
+    match title="(?i)(dialog)"
     open-floating true
 }
 window-rule {
-    match app-id=r#"^(xdg-desktop-portal-gtk)$"#
+    match app-id="(?i)^(.*dialog.*)$"
     open-floating true
 }
 window-rule {
-    match title=r#"^(Winetricks.*|Protontricks.*)$"#
+    match app-id="^(xdg-desktop-portal-gtk)$"
     open-floating true
 }
-
+window-rule {
+    match title="^(Winetricks.*|Protontricks.*)$"
+    open-floating true
+}
 // ============================================================================
 // GAMING
 // ============================================================================
-
 // declared named workspace (see session.kdl).
 // The `content = "game"` and `xdg_tag` matchers are gone, so games are matched
 // by app-id only. steam_app* covers both Proton/Wine games and native ones.
 window-rule {
-    match app-id=r#"^(steam_app.*|gamescope)$"#
+    match app-id="^(steam_app.*|gamescope)$"
     open-on-workspace "gaming"
     open-fullscreen true
 }
-
 // Steam's own client window is a large overlay, not something to tile. The
 // `exclude` keeps the plain "Steam" title out of it. Carried over from the
 // Noctalia template.
 window-rule {
     match app-id="steam"
-    exclude title=r#"^[Ss]team$"#
+    exclude title="^[Ss]team$"
     open-floating true
 }
-
 // Steam's toast popups belong in the bottom-right corner and must not steal
 // focus from the game. Carried over from the Noctalia template.
 window-rule {
-    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+    match app-id="steam" title="^notificationtoasts_\\d+_desktop$"
     default-floating-position x=10 y=10 relative-to="bottom-right"
     open-focused false
 }
-
 // Steam's "Launching..." splash, which must float over the game.
 window-rule {
-    match app-id=r#"^steam$"#
-    match title=r#"^(Launching\.{3})$"#
+    match app-id="^steam$"
+    match title="^(Launching\\.{3})$"
     open-floating true
     open-on-workspace "gaming"
 }
-
 // Steam's friends list overlay.
 window-rule {
-    match app-id=r#"^steam$"#
-    match title=r#"^(Friends List)$"#
+    match app-id="^steam$"
+    match title="^(Friends List)$"
     open-floating true
 }
+

@@ -18,7 +18,6 @@
 // precedence over solid colours. If config/layout.kdl ever sets
 // `active-gradient`, Noctalia's `active-color` in noctalia.kdl will be ignored
 // and your theme will look frozen. Keep the base layer on solid colours.
-
 include "config/input.kdl"
 include "config/output.kdl"
 include "config/layout.kdl"
@@ -27,8 +26,7 @@ include "config/window-rules.kdl"
 include "config/binds.kdl"
 include "config/session.kdl"
 include "config/debug.kdl"
-
 // ---- Layer 2: Live theme (Noctalia) — last word ----
 // Appended automatically by Noctalia; see niri/noctalia.kdl.
+include noctalia.kdl
 
-include "noctalia.kdl"
