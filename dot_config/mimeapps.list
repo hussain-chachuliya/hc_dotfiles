@@ -11,6 +11,7 @@ text/x-shellscript=code-oss.desktop;
 image/webp=imv-dir.desktop;
 text/markdown=code-oss.desktop;
 text/css=code-oss.desktop;
+text/html=code-oss.desktop;
 
 [Default Applications]
 inode/directory=thunar.desktop;
