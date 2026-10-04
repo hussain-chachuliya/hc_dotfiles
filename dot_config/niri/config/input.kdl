@@ -23,7 +23,6 @@ input {
         middle-emulation
     }
     mouse {
-        natural-scroll
         accel-profile "flat"
         accel-speed 1.0
         middle-emulation

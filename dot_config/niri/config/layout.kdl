@@ -75,13 +75,12 @@ blur {
     noise 0
     saturation 1.0
 }
-// Noctalia wallpaper as the niri backdrop, so the overview is not empty.
-// This is Noctalia's "Option 2: Stationary Wallpaper". If you would rather have
-// a blurred per-workspace wallpaper, switch the Noctalia side to the dedicated
-// backdrop surface and replace the two rules below with:
-//     layer-rule { match namespace="^noctalia-backdrop" place-within-backdrop true }
+// Noctalia's dedicated backdrop (blurred + tinted copy of the wallpaper) as
+// the niri overview backdrop. This is Noctalia's "Option 1: Blurred Overview
+// Wallpaper": sharp wallpaper normally, blurred copy only in overview.
+// Noctalia side requires [backdrop] enabled=true (see noctalia-config.toml).
 layer-rule {
-    match namespace="^noctalia-wallpaper"
+    match namespace="^noctalia-backdrop"
     place-within-backdrop true
 }
 overview {
