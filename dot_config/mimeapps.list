@@ -12,6 +12,7 @@ image/webp=imv-dir.desktop;
 text/markdown=nvim.desktop;
 text/css=nvim.desktop;
 text/html=nvim.desktop;
+application/vnd.rar=peazip.desktop;
 
 [Default Applications]
 inode/directory=thunar.desktop;
@@ -37,3 +38,4 @@ image/webp=imv-dir.desktop
 text/markdown=nvim.desktop
 x-scheme-handler/ccswitch=cc-switch-handler.desktop
 text/css=nvim.desktop
+application/vnd.rar=peazip.desktop

@@ -25,7 +25,7 @@ input {
     mouse {
         natural-scroll
         accel-profile "flat"
-        accel-speed 0.7
+        accel-speed 1.0
         middle-emulation
     }
     // Carried over from the Noctalia template (formerly niri/cfg/input.kdl,
