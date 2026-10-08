@@ -16,7 +16,7 @@ window-rule {
 }
 window-rule {
     match is-active=false
-    opacity 0.51
+    opacity 0.35
 }
 // Draw the border and focus ring AROUND rounded windows instead of as a solid
 // background rectangle that shows through translucent apps.
@@ -28,7 +28,7 @@ window-rule {
 window-rule {
     background-effect {
         blur true
-        xray false
+        xray true
     }
 }
 // ============================================================================

@@ -2,7 +2,7 @@
 ui_scale = 1.0000000074505806
 
 [backdrop]
-enabled = true
+enabled = false
 blur_intensity = 0.71999998390674591
 tint_intensity = 0.4999999888241291
 

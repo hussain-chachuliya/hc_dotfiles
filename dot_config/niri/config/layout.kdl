@@ -80,11 +80,14 @@ blur {
 // Wallpaper": sharp wallpaper normally, blurred copy only in overview.
 // Noctalia side requires [backdrop] enabled=true (see noctalia-config.toml).
 layer-rule {
-    match namespace="^noctalia-backdrop"
+    match namespace="^noctalia-wallpaper"
     place-within-backdrop true
 }
 overview {
-    backdrop-color "#212420"
+    zoom 0.35
+    workspace-shadow {
+        off
+    }
 }
 // Noctalia layer surfaces: blur their own content rather than the wallpaper.
 // xray true (niri's default) samples the wallpaper, which bleeds wallpaper
