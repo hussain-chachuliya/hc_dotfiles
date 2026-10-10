@@ -307,7 +307,7 @@ binds {
     // LAUNCHER
     // =========================================================================
     Mod+Return repeat=false hotkey-overlay-title="Open a Terminal" {
-        spawn "alacritty"
+        spawn "kitty"
     }
     Mod+E repeat=false hotkey-overlay-title="Open File Manager" {
         spawn "thunar"
@@ -523,13 +523,16 @@ binds {
     //
     // REQUIRES wtype. Without it, --clip fails with "wtype is not installed".
     // Verify with: urdu-translit --selftest
-    Mod+U repeat=false hotkey-overlay-title="Urdu: Convert Selection" {
+    // Whole line: type "aap kaise hen" -> Mod+U -> "آپ کیسے ہیں"
+    Mod+U repeat=false hotkey-overlay-title="Urdu: Convert Line" {
         spawn-sh "~/.local/bin/urdu-translit --clip"
     }
-    // Cycling the 2nd spelling in overrides.json, e.g. bhai -> بھی instead of
-    // بھائے. The choice is remembered, so plain Mod+U gives it from then on.
-    Mod+Shift+U repeat=false hotkey-overlay-title="Urdu: Other Spelling" {
-        spawn-sh "~/.local/bin/urdu-translit --clip --pick 2"
+    // Single word under cursor: after Mod+U, if "hen" -> "ہن" is wrong,
+    // move cursor into that word and press Mod+Shift+U to cycle only that
+    // word ("ہن" -> "ہیں"). Replaces Ctrl+Shift+Right word-select + copy.
+    // Falls back to existing selection if the app ignores word keys.
+    Mod+Shift+U repeat=false hotkey-overlay-title="Urdu: Fix Word" {
+        spawn-sh "~/.local/bin/urdu-translit --clip --word --pick 2"
     }
     // =========================================================================
     // NOTIFICATIONS
